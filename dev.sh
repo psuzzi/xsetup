@@ -17,10 +17,12 @@ join_by() {
 
 alias cl='clear'
 
-dev(){
+dev() {
     local funcs=("load" "code" "info") #public
     
-    local check(){
+    # Local function definitions need to use the proper bash syntax
+    local check
+    check() {
         if command -v "$1" &> /dev/null; then
             echo -e "\n== $1 ==> $(eval "$1 --version")"
             which "$1"
@@ -29,7 +31,8 @@ dev(){
         fi
     }
 
-    local init(){
+    local init
+    init() {
         # Add initialization logic here if needed
         echo "Initializing development environment..."
     }
